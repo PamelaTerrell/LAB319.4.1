@@ -15,6 +15,8 @@ router.get('/class/:id', gradesCTL.getClassGrades)
 
 router.get('/grades/stats/:id' , gradesCTL.getGradeStats)
 
+router.get('/grades/average/:id' , gradesCTL.getClassGradesAverage)
+
 // Add new grade too
 router.post('/', gradesCTL.createGrade)
 

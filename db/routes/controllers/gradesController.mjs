@@ -63,4 +63,19 @@ async function createGrade(req, res) {
   }
 }
 
-export default { getSingleGrade, getClassGrades, getStudentGrades, createGrade };
+async function getClassGradesAverage(req, res) {
+  try {
+    let query = { student_id: Number(req.params.id) };
+
+    let collection = await db.collection('grades');
+
+    let results = await collection.find(query).toArray();
+
+    res.json(results);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ msg: 'Server Error' });
+  }
+}
+
+export default { getSingleGrade, getClassGrades, getStudentGrades, createGrade, getClassGradesAverage };
